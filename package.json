@@ -8,18 +8,26 @@
     "url": "https://github.com/jkat98/benm.git"
   },
   "engines": {
-    "node": "0.10.x"
+    "node": "5.10.x"
   },
   "scripts": {
     "start": "node server/server.js",
     "test": "grunt test"
   },
   "dependencies": {
-    "express": "~3.4.2",
-    "mongoose": "~3.8.3",
-    "handlebars-runtime": "~1.0.12",
-    "express3-handlebars": "~0.5.0",
-    "MD5": "~1.2.0"
+    "connect": "~3.x",
+    "requirejs": "~2.1.x",
+    "express": "~4.x",
+    "morgan": "~1.x",
+    "body-parser": "~1.15.x",
+    "method-override": "~1.x",
+    "cookie-parser": "~1.x",
+    "domain": "0.0.x",
+    "errorhandler": "~1.4.x",
+    "mongoose": "~4.x",
+    "handlebars": "~1.0.12",
+    "express-handlebars": "~1.x",
+    "md5": "~2.x"
   },
   "devDependencies": {
     "bower": "~1.2.8",
@@ -50,7 +58,7 @@
     "grunt-contrib-less": "~0.8.3",
     "grunt-contrib-handlebars": "~0.6.0",
     "grunt-contrib-cssmin": "~0.7.0",
-    "hbsfy": "~1.0.0",
+    "hbsfy": "~1.x",
     "grunt-shell-spawn": "~0.3.0",
     "chai": "~1.9.0",
     "sinon": "~1.8.1",

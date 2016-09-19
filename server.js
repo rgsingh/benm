@@ -1,8 +1,14 @@
 var express = require('express'),
+    morgan = require('morgan'),
+    bodyParser = require('body-parser'),
+    methodOverride = require('method-override'),
+    cookieParser = require('cookie-parser'),
+    errorHandler = require('errorhandler'),
+    connect = require('connect'),
     http = require('http'),
     path = require('path'),
     routes = require('./app/routes'),
-    exphbs = require('express3-handlebars'),
+    exphbs = require('express-handlebars'),
     mongoose = require('mongoose'),
     seeder = require('./app/seeder'),
     app = express();
@@ -15,17 +21,19 @@ app.engine('handlebars', exphbs({
 }));
 app.set('view engine', 'handlebars');
 
-app.use(express.logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded());
-app.use(express.methodOverride());
-app.use(express.cookieParser('some-secret-value-here'));
-app.use(app.router);
+//app.use(express.logger('dev'));
+app.use(morgan('dev'));
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
+app.use(bodyParser.json());
+app.use(methodOverride());
+app.use(cookieParser('some-secret-value-here'));
 app.use('/', express.static(path.join(__dirname, 'public')));
 
 // development only
 if ('development' == app.get('env')) {
-    app.use(express.errorHandler());
+    app.use(errorHandler());
 }
 
 //connect to the db server:
